@@ -5,41 +5,25 @@
   font-family: "Lato", sans-serif;
 }
 
-.dashboard,
-.engagements
-{
+.container {
   display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
+}
+
+.dashboard
+{
+  padding: 10px;
+  font-size: 2rem;
 }
 
 /* Navbar CSS */
-.navbar {
-  background-color: black;
-  height: 80px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.menu-bars {
-  margin-left: 2rem;
-  font-size: 2rem;
-  background: none;
-  color: #000;
-}
 
 .nav-menu {
   background-color: #ffffff;
   width: 250px;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
-  position: fixed;
-  top: 0;
-  left: 0;
   border-radius: 8px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -87,8 +71,7 @@ span {
   margin-left: 16px;
 }
 
-h2{
-    margin-left: 16px;
-    margin-top: 16px;
- 
+.avondx {
+  margin-left: 16px;
+  margin-top: 16px;
 }

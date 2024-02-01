@@ -6,10 +6,10 @@ import "../App.css"
 
 const Navbar: React.FC = () => {
   return (
-    <>
+    <div>
       <nav className="nav-menu">
         <ul className="nav-menu-items">
-      <h2>Avondx Challange</h2>
+      <h2 className="avondx">Avondx Challange</h2>
             <li></li>
           <li className="nav-text">
             <Link to="/">
@@ -25,7 +25,7 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
       </nav>
-    </>
+    </div>
   );
 };
 

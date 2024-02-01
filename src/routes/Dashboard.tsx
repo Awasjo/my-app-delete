@@ -1,9 +1,14 @@
+import { MdOutlineConstruction } from "react-icons/md";
 
-const Dashboard: React.FC= () => {
-    console.log("Dashboard rendered")
+const Dashboard: React.FC = () => {
+  console.log("Dashboard rendered");
   return (
     <div className="dashboard">
-      Under construction!
+      <h2>Dashboard</h2>
+      <br/>
+      <MdOutlineConstruction />
+      Under construction
+      <MdOutlineConstruction />
     </div>
   );
 };
