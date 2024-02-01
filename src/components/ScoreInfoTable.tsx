@@ -2,7 +2,13 @@
 import React from 'react';
 import './ScoreInfoTable.css';
 
-const ScoreInfoTable: React.FC = () => {
+interface ScoreInfoTableProps {
+  phrase: string;
+}
+
+const ScoreInfoTable: React.FC<ScoreInfoTableProps> = ({phrase}) => {
+
+  
   return (
     <div className="score-info-table">
       <table>

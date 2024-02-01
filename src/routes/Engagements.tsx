@@ -85,7 +85,7 @@ const Engagements: React.FC = () => {
               {selectedRow && selectedRow.id === item.id && (
                 <tr className="tbody-hover">
                   <td colSpan={6}>
-                    <ScoreInfoTable />
+                    <ScoreInfoTable  phrase={selectedRow?.transcript || ''}/>
                   </td>
                 </tr>
               )}
