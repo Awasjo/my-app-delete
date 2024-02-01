@@ -72,7 +72,7 @@ const handleScoreClick = (row: Engagement) => {
                 <td><button>Detail</button></td>
               </tr>
               {selectedRow && selectedRow.id === item.id && (
-                <tr>
+                <tr className="tbody-hover">
                   <td colSpan={6}>
                     <ScoreInfoTable />
                   </td>
