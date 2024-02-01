@@ -21,7 +21,7 @@ const Engagements: React.FC = () => {
         // Convert date strings to Date objects
         const engagementsWithDates = data.map((engagement) => ({
           ...engagement,
-          startedAt: new Date(engagement.startedAt),
+          startedAt: new Date(engagement.startedAt), //replaces the startedAt with Date type instead of incoming string type
           endedAt: new Date(engagement.endedAt),
         }));
         setEngagements(engagementsWithDates);
@@ -34,15 +34,22 @@ const Engagements: React.FC = () => {
     return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
   };
 
-// Function to format date as "AM and PM"
-const formatDateTime = (date: Date): string => {
-  const options: Intl.DateTimeFormatOptions = { hour: 'numeric', minute: '2-digit', hour12: true };
-  return date.toLocaleTimeString('en-US', options);
-};
+  // Function to format date as "AM and PM"
+  const formatDateTime = (date: Date): string => {
+    const options: Intl.DateTimeFormatOptions = {
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    };
+    return date.toLocaleTimeString("en-US", options);
+  };
 
-const handleScoreClick = (row: Engagement) => {
-  setSelectedRow(row);
-};
+  const handleScoreClick = (row: Engagement) => {
+    setSelectedRow((prevSelectedRow) => {
+      // Toggle visibility by setting to null if the same row is clicked again
+      return prevSelectedRow && prevSelectedRow.id === row.id ? null : row;
+    });
+  };
 
   return (
     <div className="div-container">
@@ -66,10 +73,14 @@ const handleScoreClick = (row: Engagement) => {
                 <td>{formatDateTime(item.startedAt)}</td>
                 <td>{item.staff}</td>
                 <td>
-                  <a onClick={() => handleScoreClick(item)}>{(item.score) * 100}%</a>
+                  <a onClick={() => handleScoreClick(item)}>
+                    {item.score * 100}%
+                  </a>
                 </td>
                 <td>{item.transcript}</td>
-                <td><button>Detail</button></td>
+                <td>
+                  <button>Detail</button>
+                </td>
               </tr>
               {selectedRow && selectedRow.id === item.id && (
                 <tr className="tbody-hover">
