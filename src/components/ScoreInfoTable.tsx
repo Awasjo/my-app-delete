@@ -1,27 +1,32 @@
 // components/ScoreInfoTable.tsx
-import React from 'react';
-import './ScoreInfoTable.css';
+import React from "react";
+import "./ScoreInfoTable.css";
+import ScoreInfoData from "../models/ScoreInfoData";
 
 interface ScoreInfoTableProps {
   phrase: string;
 }
 
-const ScoreInfoTable: React.FC<ScoreInfoTableProps> = ({phrase}) => {
+interface ScoreInfoModel {
+  keyword: string;
+  score: string;
+}
 
-    // Define an array of keywords to search for
-    const keywords = ['Thank you', 'Promotion', 'Welcome'];
+const ScoreInfoTable: React.FC<ScoreInfoTableProps> = ({ phrase }) => {
+  // Define an array of keywords to search for
+  const keywords = ["Thank you", "Promotion", "Welcome"];
 
-    // Function to check if a keyword exists in the transcript
-    const hasKeyword = (text: string, keyword: string) => {
-      console.log("test")
-      console.log(text.toLowerCase().includes(keyword.toLowerCase()))
-      return text.toLowerCase().includes(keyword.toLowerCase());
-    };
-  
+  // Function to check if a keyword exists in the transcript
+  const hasKeyword = (text: string, keyword: string) => {
+    console.log("test");
+    console.log(text.toLowerCase().includes(keyword.toLowerCase()));
+    return text.toLowerCase().includes(keyword.toLowerCase());
+  };
+
   return (
     <div className="score-info-table">
       <table>
-        <thead className='table-thead'>
+        <thead className="table-thead">
           <tr>
             <th>SERVICE</th>
             <th>WEIGHT</th>
@@ -30,24 +35,16 @@ const ScoreInfoTable: React.FC<ScoreInfoTableProps> = ({phrase}) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Thank you</td>
-            <td>5</td>
-            <td className="placeholder">{hasKeyword(phrase,keywords[0])? "1 / 1": "0 / anana111"}</td>
-            <td className="placeholder">Placeholder</td>
-          </tr>
-          <tr>
-            <td>Promotion</td>
-            <td>90</td>
-            <td className="placeholder">Placeholder</td>
-            <td className="placeholder">Placeholder</td>
-          </tr>
-          <tr>
-            <td>Welcome</td>
-            <td>5</td>
-            <td className="placeholder">Placeholder</td>
-            <td className="placeholder">Placeholder</td>
-          </tr>
+          {ScoreInfoData.map((item: ScoreInfoModel) => (
+            <tr>
+              <td>{item.keyword}</td>
+              <td>{item.score}</td>
+              <td className="placeholder">
+                {hasKeyword(phrase, item.keyword) ? "1 / 1" : "0 / 1"}
+              </td>
+              <td className="placeholder">{hasKeyword(phrase, item.keyword) ? "Yes" : "No"}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
